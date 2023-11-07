@@ -1,0 +1,73 @@
+.Button {
+    background-color: #000000;
+    color: #FFBF00;
+    font-size: 1.5rem;
+    align-self: center;
+    border-radius: 100px;
+    border-color: transparent;
+    padding: 5px 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+    min-width: 150px;
+  }
+  
+  .Button:hover {
+    background-color: #FFBF00;
+    color: #000000;
+    opacity: 0.8;
+    border-color: transparent;
+    cursor: pointer;
+  }
+  
+  .Button:hover:active {
+    background-color: #FFBF00 !important;
+  }
+  
+  .Button:active {
+    background-color: #FFBF00 !important;
+  }
+  
+  .Button:focus {
+    background-color: #FFBF00;
+  }
+  
+  .Wide {
+    padding: 10px 50px;
+    width: 100%;
+  }
+  
+  .Gold,
+  .GoldOutline:hover,
+  .Bright:hover {
+    background-color: #FFBF00;
+    color: #ffffff;
+  }
+  
+  .GoldOutline,
+  .Gold:hover {
+    /* border: 1px solid #2142b2; */
+    background-color: #ffffff;
+    color: #FFBF00;
+  }
+  
+  .Black,
+  .BlackOutline:hover {
+    /* background-color: #242a3d;
+      color: white; */
+    background-color: #242a3d;
+    color: aliceGold;
+  }
+  
+  .Black:hover,
+  .BlackOutline {
+    /* background-color: #dadadf;
+      color: #242a3d;
+      border-color: #242a3d; */
+    background-color: aliceGold;
+    color: #242a3d;
+  }
+  
+  .Bright {
+    background-color: #000000;
+    color: #FFBF00;
+  }
