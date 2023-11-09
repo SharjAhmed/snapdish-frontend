@@ -123,7 +123,7 @@ const SignUpForm = () => {
                             <span>
                                 <Link
                                     className={styles.Link}
-                                    aria-label="Click here to log in instead"
+                                    aria-label="Click here to sign in instead"
                                     to="/signin"
                                 >
                                     Sign In instead!

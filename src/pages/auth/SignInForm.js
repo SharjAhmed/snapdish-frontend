@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
+import styles from "../../styles/Form.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import {
@@ -13,7 +14,11 @@ import {
     Alert,
 } from "react-bootstrap";
 
+import { SetCurrentUserContext } from "../../App";
+
 function SignInForm() {
+    const setCurrentUser = useContext(SetCurrentUserContext);
+
     const [signInData, setSignInData] = useState({
         username: "",
         password: "",
@@ -35,7 +40,8 @@ function SignInForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("/dj-rest-auth/login/", signInData);
+            const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+            setCurrentUser(data.user)
             history.push("/");
         } catch (err) {
             setErrors(err.response?.data);
@@ -89,6 +95,20 @@ function SignInForm() {
                                 Sign In
                             </Button>
                         </Form>
+                    </Row>
+                    <Row className="mt-4 justify-content-center">
+                        <p>
+                            Don't have an account?{" "}
+                            <span>
+                                <Link
+                                    className={styles.Link}
+                                    aria-label="Click here to sign up instead"
+                                    to="/signup"
+                                >
+                                    Sign Up instead!
+                                </Link>
+                            </span>
+                        </p>
                     </Row>
                 </Col>
             </Row>
