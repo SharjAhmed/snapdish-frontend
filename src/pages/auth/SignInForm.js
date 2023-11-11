@@ -1,9 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-
-import styles from "../../styles/Form.module.css";
-import btnStyles from "../../styles/Button.module.css";
 
 import {
     Form,
@@ -14,38 +10,41 @@ import {
     Alert,
 } from "react-bootstrap";
 
-import { SetCurrentUserContext } from "../../App";
+import { Link, useHistory } from "react-router-dom";
+
+import styles from "../../styles/Form.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
-    const setCurrentUser = useContext(SetCurrentUserContext);
+    const setCurrentUser = useSetCurrentUser();
 
     const [signInData, setSignInData] = useState({
         username: "",
         password: "",
     });
-
     const { username, password } = signInData;
 
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+            setCurrentUser(data.user);
+            history.push("/");
+        } catch (err) {
+            setErrors(err.response?.data);
+        }
+    };
 
     const handleChange = (event) => {
         setSignInData({
             ...signInData,
             [event.target.name]: event.target.value,
         });
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const {data} = await axios.post("/dj-rest-auth/login/", signInData);
-            setCurrentUser(data.user)
-            history.push("/");
-        } catch (err) {
-            setErrors(err.response?.data);
-        }
     };
 
     return (
