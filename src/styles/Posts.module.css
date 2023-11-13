@@ -1,0 +1,32 @@
+.Post {
+    background-color: #ffffff;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    margin-bottom: 16px;
+}
+
+.Post figure, h5 {
+    margin: 0 0 ;
+}
+
+.Link {
+    text-decoration: none;
+}
+
+.Date {
+    margin-left: 80%;
+    margin-top: -9%;
+    font-size: small;
+}
+
+.Heart {
+    color: #f85032;
+}
+
+.Heart:hover {
+    color: #ffbf00;
+}
+
+.HeartOutline:hover {
+    color: #f85032;
+}

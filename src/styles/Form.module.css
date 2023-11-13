@@ -19,7 +19,7 @@
     text-align: center;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #FFBF00;
+    color: #ffbf00;
   }
   
   .Link {
@@ -34,7 +34,7 @@
   }
 
   .Link:hover {
-    color: #FFBF00;
+    color: #ffbf00;
     font-weight: bolder;
   }
   

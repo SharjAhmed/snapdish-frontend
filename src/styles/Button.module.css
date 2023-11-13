@@ -1,6 +1,6 @@
 .Button {
     background-color: #000000;
-    color: #FFBF00;
+    color: #ffbf00;
     font-size: 1rem;
     align-self: center;
     border-radius: 100px;
@@ -12,7 +12,7 @@
   }
   
   .Button:hover {
-    background-color: #FFBF00;
+    background-color: #ffbf00;
     color: #000000;
     opacity: 0.8;
     border-color: transparent;
@@ -28,7 +28,7 @@
   }
   
   .Button:focus {
-    background-color: #FFBF00;
+    background-color: #ffbf00;
   }
   
   .Wide {
@@ -39,7 +39,7 @@
   .Gold,
   .GoldOutline:hover,
   .Bright:hover {
-    background-color: #FFBF00;
+    background-color: #ffbf00;
     color: #ffffff;
   }
   
@@ -47,7 +47,7 @@
   .Gold:hover {
     /* border: 1px solid #2142b2; */
     background-color: #ffffff;
-    color: #FFBF00;
+    color: #ffbf00;
   }
   
   .Black,
@@ -69,5 +69,5 @@
   
   .Bright {
     background-color: #000000;
-    color: #FFBF00;
+    color: #ffbf00;
   }
