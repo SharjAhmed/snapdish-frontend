@@ -67,13 +67,13 @@ const Post = (props) => {
                         {owner}
                     </Link>
                     <div className="d-flex align-items-center">
-                        <span className={styles.Date}>{updated_at}</span>
+                        <span>{updated_at}</span>
                         {is_owner && postPage && "..."}
                     </div>
                 </Card.Title>
             </Card.Body>
             <Link to={`/posts/${id}`}>
-                <Card.Img src={image} alt={title} />
+                <Card.Img src={image} alt={title} className={styles.Image}/>
             </Link>
             <Card.Body>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}

@@ -19,6 +19,10 @@
     font-size: small;
 }
 
+.Image {
+    max-height: fit-content;
+}
+
 .Heart {
     color: #f85032;
 }
