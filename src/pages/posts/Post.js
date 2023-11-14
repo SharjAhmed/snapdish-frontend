@@ -67,7 +67,6 @@ const Post = (props) => {
                         {owner}
                     </Link>
                     <div className="d-flex align-items-center">
-                        <span>{updated_at}</span>
                         {is_owner && postPage && "..."}
                     </div>
                 </Card.Title>
@@ -78,6 +77,8 @@ const Post = (props) => {
             <Card.Body>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {content && <Card.Text>{content}</Card.Text>}
+                {updated_at}
+                <hr />
                 <div className={styles.PostBar}>
                     {is_owner ? (
                         <OverlayTrigger
