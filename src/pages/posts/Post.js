@@ -62,7 +62,7 @@ const Post = (props) => {
         <Card className={styles.Post}>
             <Card.Body>
                 <Card.Title className="align-items-center justify-content-between">
-                    <Link to={`/profiles/${profile_id}`}>
+                    <Link to={`/profiles/${profile_id}`} className={styles.Link}>
                         <Avatar src={profile_image} height={55} />
                         {owner}
                     </Link>
@@ -72,12 +72,23 @@ const Post = (props) => {
                 </Card.Title>
             </Card.Body>
             <Link to={`/posts/${id}`}>
-                <Card.Img src={image} alt={title} className={styles.Image}/>
+                <Card.Img src={image} alt={title} className={styles.Image} />
             </Link>
             <Card.Body>
-                {title && <Card.Title className="text-center">{title}</Card.Title>}
+                {title &&
+                    <Card.Title
+                        className="fs-3 fw-bold text-decoration-underline"
+                    >
+                        {title}
+                    </Card.Title>}
                 {content && <Card.Text>{content}</Card.Text>}
-                {updated_at}
+                {updated_at &&
+                    <Card.Subtitle
+                        className={`mb-2 text-muted ${styles.Date}`}
+                    >
+                        {updated_at}
+                    </Card.Subtitle>
+                }
                 <hr />
                 <div className={styles.PostBar}>
                     {is_owner ? (

@@ -71,13 +71,13 @@
   
   /* scrollbar */
   *::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
   }
   *::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
   *::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #ffbf00;
   }
   *::-webkit-scrollbar-thumb:hover {
     background: #555;
