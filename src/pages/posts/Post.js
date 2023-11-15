@@ -81,7 +81,10 @@ const Post = (props) => {
                     >
                         {title}
                     </Card.Title>}
-                {content && <Card.Text>{content}</Card.Text>}
+                {content &&
+                    <Card.Text>
+                        {content}
+                    </Card.Text>}
                 {updated_at &&
                     <Card.Subtitle
                         className={`mb-2 text-muted ${styles.Date}`}
