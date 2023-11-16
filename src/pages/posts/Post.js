@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "../../styles/Posts.module.css";
+import appStyles from "../../App.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Container, Row, Col, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import EditDeleteDropdown from "../../components/EditDeleteDropdown"
 import { axiosRes } from "../../api/axiosDefaults";
 
 const Post = (props) => {
@@ -78,7 +80,9 @@ const Post = (props) => {
                 <Container>
                     <Row>
                         <Col>
-                            <Link to={`/profiles/${profile_id}`}>
+                            <Link
+                                className={styles.Link}
+                                to={`/profiles/${profile_id}`}>
                                 <Avatar
                                     src={profile_image}
                                     height={55}
@@ -88,26 +92,10 @@ const Post = (props) => {
                         </Col>
                         <Col className="text-end">
                             {is_owner && postPage && (
-                                <>
-                                    <OverlayTrigger
-                                        placement="bottom"
-                                        overlay={<Tooltip>Edit Post</Tooltip>}
-                                    >
-                                        <i
-                                            className="fa-solid fa-pencil"
-                                            onClick={handleEdit}
-                                        ></i>
-                                    </OverlayTrigger>
-                                    <OverlayTrigger
-                                        placement="bottom"
-                                        overlay={<Tooltip>Delete Post</Tooltip>}
-                                    >
-                                        <i
-                                            className={`fa-regular fa-trash-can ${styles.Bin}`}
-                                            onClick={handleDelete}
-                                        ></i>
-                                    </OverlayTrigger>
-                                </>
+                                <EditDeleteDropdown 
+                                    handleEdit={handleEdit}
+                                    handleDelete={handleDelete}
+                                />
                             )}
                         </Col>
                     </Row>
@@ -119,7 +107,7 @@ const Post = (props) => {
             <Card.Body>
                 {title &&
                     <Card.Title
-                        className="fs-3 fw-bold text-decoration-underline"
+                        className="s-3 fw-bold text-decoration-underline"
                     >
                         {title}
                     </Card.Title>}
@@ -128,13 +116,13 @@ const Post = (props) => {
                         {content}
                     </Card.Text>}
                 {updated_at &&
-                    <Card.Subtitle
-                        className={`mb-2 text-muted ${styles.Date}`}
+                    <Card.Text
+                        className={appStyles.Date}
                     >
                         {updated_at}
-                    </Card.Subtitle>
+                    </Card.Text>
                 }
-                <hr />
+                <hr className={styles.Line} />
                 <div className={styles.PostBar}>
                     {is_owner ? (
                         <OverlayTrigger

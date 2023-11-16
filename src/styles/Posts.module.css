@@ -13,10 +13,6 @@
     text-decoration: none;
 }
 
-.Date {
-    font-size: small;
-}
-
 .Image {
     max-height: fit-content;
 }
@@ -31,4 +27,8 @@
 
 .HeartOutline:hover {
     color: #f85032;
+}
+
+.Line {
+    border: 1px #ffbf00 solid;
 }
