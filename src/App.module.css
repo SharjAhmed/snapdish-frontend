@@ -87,6 +87,14 @@ figure {
   z-index: 99;
 }
 
+.WordBreak {
+  word-break: break-all;
+}
+
+.Profile {
+  width: 70%;
+}
+
 /* scrollbar */
 *::-webkit-scrollbar {
   width: 10px;

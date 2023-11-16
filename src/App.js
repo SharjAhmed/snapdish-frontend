@@ -18,6 +18,7 @@ function App() {
   return (
     <div className={styles.App}>
       <NavBar />
+      <br />
       <Container className={styles.Main}>
         <Switch>
           <Route

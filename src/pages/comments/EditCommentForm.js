@@ -9,7 +9,6 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 function EditCommentForm(props) {
     const { id, content, setShowEditForm, setComments } = props;
-
     const [formContent, setFormContent] = useState(content);
 
     const handleChange = (event) => {
@@ -51,16 +50,16 @@ function EditCommentForm(props) {
                     rows={2}
                 />
             </Form.Group>
-            <div className="text-end">
+            <div>
                 <button
-                    className={`${btnStyles.Button} btn d-block ms-auto`}
+                    className={`${btnStyles.Button} mt-4`}
                     disabled={!content.trim()}
                     type="submit"
                 >
                     Comment
                 </button>
                 <button
-                    className={btnStyles.Button}
+                    className={`${btnStyles.Button} mt-4`}
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >

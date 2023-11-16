@@ -49,21 +49,30 @@ const Comment = (props) => {
             <hr />
             <Container>
                 <Row>
-                    <Col sm={1}>
+                    <Col sm={2}>
                         <Link to={`/profiles/${profile_id}`}>
                             <Avatar src={profile_image} />
                         </Link>
                     </Col>
-                    <Col sm={9}>
+                    <Col sm={10}>
                         <span className={styles.Owner}>{owner}</span>
                         <span className={appStyles.Date}>{updated_at}</span>
                         {showEditForm ? (
-                            <EditCommentForm />
+                            <EditCommentForm
+                                id={id}
+                                profile_id={profile_id}
+                                content={content}
+                                profileImage={profile_image}
+                                setComments={setComments}
+                                setShowEditForm={setShowEditForm}
+                            />
                         ) : (
                             <p>{content}</p>
                         )}
                     </Col>
-                    <Col sm={2} className="text-end">
+                    </Row>
+                    <Row>
+                    <Col className="text-end">
                         {is_owner && !showEditForm && (
                             <EditDeleteDropdown
                                 handleEdit={() => setShowEditForm(true)}
