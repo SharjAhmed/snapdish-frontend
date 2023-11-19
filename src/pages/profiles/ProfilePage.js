@@ -1,30 +1,26 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Button, Image } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/logo-black.png";
 import { EditProfileDropdown } from "../../components/EditDeleteDropdown";
 import Post from "../posts/Post";
+import PopularProfiles from "./PopularProfiles";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import { fetchMoreData } from "../../utils/utils";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
-import PopularProfiles from "./PopularProfiles";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  useProfileData,
-  useSetProfileData,
-} from "../../contexts/ProfileDataContext";
-import { fetchMoreData } from "../../utils/utils";
-
-import { axiosReq } from "../../api/axiosDefaults";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -51,7 +47,7 @@ function ProfilePage() {
         setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();
@@ -90,14 +86,14 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Inverted}`}
+                className={`mt-5 ${btnStyles.Button} ${btnStyles.Inverted}`}
                 onClick={() => handleUnfollow(profile)}
               >
                 Unfollow
               </Button>
             ) : (
               <Button
-                className={btnStyles.Button}
+                className={`mt-5 ${btnStyles.Button}`}
                 onClick={() => handleFollow(profile)}
               >
                 Follow

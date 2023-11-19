@@ -1,12 +1,10 @@
 import React, { useState } from "react";
+import { axiosRes } from "../../api/axiosDefaults";
 
 import { Form } from "react-bootstrap";
-import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/Form.module.css";
 import btnStyles from "../../styles/Button.module.css"
-
-
 
 function EditCommentForm(props) {
     const { id, content, setShowEditForm, setComments } = props;
@@ -23,21 +21,21 @@ function EditCommentForm(props) {
             await axiosRes.put(`/comments/${id}/`, {
                 content: formContent.trim(),
             });
-            setComments((prevComments) => ({
-                ...prevComments,
-                results: prevComments.results.map((comment) => {
-                    return comment.id === id
+            setComments((prevComments) => {
+                const updatedComments = prevComments.results.map((comment) =>
+                    comment.id === id
                         ? {
                             ...comment,
                             content: formContent.trim(),
                             updated_at: "now",
                         }
-                        : comment;
-                }),
-            }));
+                        : comment
+                );
+                return { ...prevComments, results: updatedComments };
+            });
             setShowEditForm(false);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

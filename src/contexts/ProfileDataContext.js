@@ -1,5 +1,12 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { axiosReq, axiosRes } from "../api/axiosDefaults";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState
+} from "react";
+
+import {axiosReq, axiosRes } from "../api/axiosDefaults";
+
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
 
@@ -39,7 +46,7 @@ export const ProfileDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -61,7 +68,7 @@ export const ProfileDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -76,7 +83,7 @@ export const ProfileDataProvider = ({ children }) => {
           popularProfiles: data,
         }));
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
 
@@ -86,8 +93,8 @@ export const ProfileDataProvider = ({ children }) => {
   return (
     <ProfileDataContext.Provider value={profileData}>
       <SetProfileDataContext.Provider value={{ setProfileData, handleFollow, handleUnfollow }}>
-  {children}
-</SetProfileDataContext.Provider>
+        {children}
+      </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -7,9 +8,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/Form.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Avatar from "../../components/Avatar";
-
-import { axiosRes } from "../../api/axiosDefaults";
-
 
 function CreateCommentForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
@@ -40,7 +38,7 @@ function CreateCommentForm(props) {
       }));
       setContent("");
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

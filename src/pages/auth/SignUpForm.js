@@ -5,14 +5,12 @@ import axios from "axios";
 import styles from "../../styles/Form.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import {
-    Form,
-    Button,
-    Col,
-    Row,
-    Container,
-    Alert,
-} from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({

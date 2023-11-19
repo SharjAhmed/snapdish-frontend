@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory, useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -11,9 +13,6 @@ import Alert from "react-bootstrap/Alert";
 import styles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
-import { useHistory, useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 
 function EditPostForm() {
     const [errors, setErrors] = useState({});
@@ -37,7 +36,7 @@ function EditPostForm() {
 
                 is_owner ? setPostData({ title, content, image }) : history.push("/");
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 
@@ -76,7 +75,7 @@ function EditPostForm() {
             await axiosReq.put(`/posts/${id}/`, formData);
             history.push(`/posts/${id}`);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }

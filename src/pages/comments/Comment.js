@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import styles from "../../styles/Form.module.css"
-import appStyles from "../../App.module.css"
-import btnStyles from "../../styles/Button.module.css"
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import EditCommentForm from "./EditCommentForm";
-import { Button } from "react-bootstrap";
+
+import styles from "../../styles/Form.module.css"
+import appStyles from "../../App.module.css"
+import btnStyles from "../../styles/Button.module.css"
 
 const Comment = (props) => {
     const {

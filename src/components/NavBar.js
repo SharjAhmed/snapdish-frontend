@@ -1,12 +1,18 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from "../assets/logo-black.png";
-import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+import logo from "../assets/logo-black.png";
+import Avatar from "./Avatar";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { removeTokenTimestamp } from "../utils/utils";
+import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
+
+import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -18,9 +24,9 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
-      localStorage.removeItem('authToken');
+      removeTokenTimestamp();
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -36,10 +42,10 @@ const NavBar = () => {
   const loggedInIcons = <>
     <NavLink
       className={styles.NavLink}
-      activeClassName={styles.Activedsgdg}
-      to="/feed"
+      activeClassName={styles.Active}
+      to="/summary"
     >
-      <i className="fa-solid fa-film"></i> Feed
+      <i className="fa-solid fa-camera"></i> Summary
     </NavLink>
     <NavLink
       className={styles.NavLink}
@@ -105,7 +111,7 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              <i className="fas fa-home"></i> Home
+              <i className="fa-solid fa-film"></i> Feed
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>

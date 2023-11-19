@@ -1,12 +1,20 @@
 import React from "react";
-import styles from "../../styles/Posts.module.css";
-import appStyles from "../../App.module.css"
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Container, Row, Col, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import Avatar from "../../components/Avatar";
 import EditDeleteDropdown from "../../components/EditDeleteDropdown"
-import { axiosRes } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
+import styles from "../../styles/Posts.module.css";
+import appStyles from "../../App.module.css"
 
 const Post = (props) => {
     const {
@@ -38,7 +46,7 @@ const Post = (props) => {
             await axiosRes.delete(`/posts/${id}/`);
             history.goBack();
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
@@ -54,7 +62,7 @@ const Post = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
@@ -70,7 +78,7 @@ const Post = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
