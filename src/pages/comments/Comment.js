@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import styles from "../../styles/Form.module.css"
 import appStyles from "../../App.module.css"
+import btnStyles from "../../styles/Button.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import EditDeleteDropdown from "../../components/EditDeleteDropdown"
 import EditCommentForm from "./EditCommentForm";
+import { Button } from "react-bootstrap";
 
 const Comment = (props) => {
     const {
@@ -18,12 +19,18 @@ const Comment = (props) => {
         updated_at,
         content,
         setPost,
-        setComments
+        setComments,
     } = props;
 
     const [showEditForm, setShowEditForm] = useState(false);
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+    const [editedContent, setEditedContent] = useState(content);
+
+    const handleEdit = () => {
+        setEditedContent(content);
+        setShowEditForm(true);
+    };
 
     const handleDelete = async () => {
         try {
@@ -54,30 +61,50 @@ const Comment = (props) => {
                             <Avatar src={profile_image} />
                         </Link>
                     </Col>
-                    <Col sm={10}>
+                    <Col sm={8}>
                         <span className={styles.Owner}>{owner}</span>
                         <span className={appStyles.Date}>{updated_at}</span>
                         {showEditForm ? (
                             <EditCommentForm
+                                owner={owner}
                                 id={id}
-                                profile_id={profile_id}
-                                content={content}
-                                profileImage={profile_image}
+                                content={editedContent}
                                 setComments={setComments}
                                 setShowEditForm={setShowEditForm}
+                                axiosReq={axiosRes}
                             />
                         ) : (
-                            <p>{content}</p>
+                            <p>{editedContent}</p>
                         )}
                     </Col>
-                    </Row>
-                    <Row>
-                    <Col className="text-end">
+                    <Col sm={2}>
                         {is_owner && !showEditForm && (
-                            <EditDeleteDropdown
-                                handleEdit={() => setShowEditForm(true)}
-                                handleDelete={handleDelete}
-                            />
+                            <>
+                                <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip>Edit Comment</Tooltip>}
+                                >
+                                    <Button
+                                        className={
+                                            `fa-solid fa-pencil
+                                        ${btnStyles.EditDeleteButton}`
+                                        }
+                                        onClick={handleEdit}
+                                    />
+                                </OverlayTrigger>
+                                <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip>Delete Comment</Tooltip>}
+                                >
+                                    <Button
+                                        onClick={handleDelete}
+                                        className={
+                                            `fa-regular fa-trash-can
+                                        ${btnStyles.EditDeleteButton}`
+                                        }
+                                    />
+                                </OverlayTrigger>
+                            </>
                         )}
                     </Col>
                 </Row>

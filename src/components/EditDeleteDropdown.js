@@ -17,7 +17,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 
 export const EditDeleteDropdown = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="ml-auto" drop="left">
+    <Dropdown drop="left">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -49,21 +49,25 @@ export const EditProfileDropdown = ({ id }) => {
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu>
-        <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit`)}
-          aria-label="edit-profile"
-        >
-          <i className="fa-solid fa-pencil" />
-          Edit Profile
-        </Dropdown.Item>
-        <Dropdown.Item
+      <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
-        >
-          <i className="far fa-id-card" />
+        >          
+          <i className="fa-solid fa-pencil" />
           Update Username
         </Dropdown.Item>
         <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={() => history.push(`/profiles/${id}/edit`)}
+          aria-label="edit-profile"
+        >
+          <i className="fa-solid fa-user-pen" />
+          Edit Profile Image
+        </Dropdown.Item>
+        
+        <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >

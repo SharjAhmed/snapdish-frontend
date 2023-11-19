@@ -76,9 +76,13 @@ figure {
 }
 
 .DropdownItem {
-  display: inline-block;
-  max-width: 50%;
-  padding: 0px;
+  display: list-item;
+  margin-right: 5px;
+}
+
+.DropdownItem:hover {
+  background-color: #000000;
+  color: #ffbf00;
 }
 
 .Absolute {

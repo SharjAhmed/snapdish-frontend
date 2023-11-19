@@ -12,7 +12,7 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
-  const {expanded, setExpanded, ref} = useClickOutsideToggle();
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -56,10 +56,12 @@ const NavBar = () => {
       <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
     </NavLink>
     <NavLink
-      className={styles.NavLink}
       to={`/profiles/${currentUser?.profile_id}`}
     >
-      <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+      <Avatar
+        src={currentUser?.profile_image}
+        height={50}
+      />
     </NavLink>
   </>;
   const loggedOutIcons = (

@@ -8,6 +8,11 @@
     text-decoration: none;
 }
 
+.Active {
+    color: #ffbf00;
+    font-weight: bold;
+}
+
 .Active i {
     color: #ffbf00;
 }

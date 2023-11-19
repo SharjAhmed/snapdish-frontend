@@ -44,7 +44,6 @@
 
 .GoldOutline,
 .Gold:hover {
-  /* border: 1px solid #2142b2; */
   background-color: #ffffff;
   color: #ffbf00;
 }
@@ -63,4 +62,20 @@
   background-color: #000000;
   color: #ffbf00;
   border: #ffbf00 3px solid;
+}
+
+.EditDeleteButton {
+  padding: 10px !important;
+  background-color: #000000;
+  color: #ffbf00;
+  border: #ffbf00 3px solid;
+  border-radius: 100%;
+  width: fit-content;
+  margin: 5px;
+}
+
+.EditDeleteButton:hover {
+  background-color: #ffbf00;
+  color: #000000;
+  border: #000000 3px solid;
 }

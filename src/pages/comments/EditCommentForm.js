@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-import Form from "react-bootstrap/Form";
+import { Form } from "react-bootstrap";
+import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/Form.module.css";
 import btnStyles from "../../styles/Button.module.css"
 
-import { axiosRes } from "../../api/axiosDefaults";
+
 
 function EditCommentForm(props) {
     const { id, content, setShowEditForm, setComments } = props;
+
     const [formContent, setFormContent] = useState(content);
 
     const handleChange = (event) => {
@@ -39,9 +41,13 @@ function EditCommentForm(props) {
         }
     };
 
+
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group className="pr-1">
+            <Form.Group
+                className="pr-1"
+                controlId={`editComment_${id}`}
+            >
                 <Form.Control
                     className={styles.Form}
                     as="textarea"
@@ -52,14 +58,14 @@ function EditCommentForm(props) {
             </Form.Group>
             <div>
                 <button
-                    className={`${btnStyles.Button} mt-4`}
-                    // disabled={!content.trim()}
+                    className={btnStyles.Button}
+                    disabled={!content.trim()}
                     type="submit"
                 >
                     Comment
                 </button>
                 <button
-                    className={`${btnStyles.Button} mt-4`}
+                    className={btnStyles.Button}
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >

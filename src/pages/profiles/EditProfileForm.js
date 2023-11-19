@@ -53,13 +53,6 @@ const ProfileEditForm = () => {
         handleMount();
     }, [currentUser, history, id]);
 
-    const handleChange = (event) => {
-        setProfileData({
-            ...profileData,
-            [event.target.name]: event.target.value,
-        });
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -83,45 +76,13 @@ const ProfileEditForm = () => {
         }
     };
 
-    const textFields = (
-        <>
-            <Form.Group>
-                <Form.Label>Bio</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    value={content}
-                    onChange={handleChange}
-                    name="content"
-                    rows={7}
-                />
-            </Form.Group>
-
-            {errors?.content?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                    {message}
-                </Alert>
-            ))}
-            <br />
-            <Button
-                className={btnStyles.Button}
-                type="submit"
-            >
-                Save
-            </Button>
-            <Button
-                className={btnStyles.Button}
-                onClick={() => history.goBack()}
-            >
-                Cancel
-            </Button>
-            
-        </>
-    );
-
     return (
-        <Form onSubmit={handleSubmit}>
-            <Row>
-                <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
+        <Form
+            
+            onSubmit={handleSubmit}
+        >
+            <Row className="d-flex align-items-center justify-content-center text-center">
+                <Col md={7} lg={6}>
                     <Container className={appStyles.Content}>
                         <Form.Group>
                             {image && (
@@ -157,12 +118,27 @@ const ProfileEditForm = () => {
                                 }}
                             />
                         </Form.Group>
-                        <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-                    <Container className={appStyles.Content}>{textFields}</Container>
-                </Col>
+            </Row>
+            <Row>
+                <Container>
+                    <Col className="d-flex align-items-center justify-content-center text-center">
+                        <br />
+                        <Button
+                            className={btnStyles.Button}
+                            type="submit"
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            className={btnStyles.Button}
+                            onClick={() => history.goBack()}
+                        >
+                            Cancel
+                        </Button>
+                    </Col>
+                </Container>
             </Row>
         </Form>
     );
