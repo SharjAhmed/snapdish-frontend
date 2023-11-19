@@ -41,6 +41,14 @@ const NavBar = () => {
   )
   const loggedInIcons = <>
     <NavLink
+      exact
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/"
+    >
+      <i className="fa-solid fa-film"></i> Feed
+    </NavLink>
+    <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
       to="/liked"
@@ -65,13 +73,6 @@ const NavBar = () => {
   </>;
   const loggedOutIcons = (
     <>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/summary"
-      >
-        <i className="fa-solid fa-camera"></i> Summary
-      </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -106,12 +107,11 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <NavLink
-              exact
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/"
+              to="/summary"
             >
-              <i className="fa-solid fa-film"></i> Feed
+              <i className="fa-solid fa-camera"></i> Summary
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
