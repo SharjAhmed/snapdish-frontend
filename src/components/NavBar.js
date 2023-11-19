@@ -43,20 +43,13 @@ const NavBar = () => {
     <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
-      to="/summary"
-    >
-      <i className="fa-solid fa-camera"></i> Summary
-    </NavLink>
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
       to="/liked"
     >
       <i className="fa-solid fa-heart"></i> Liked Posts
     </NavLink>
     <NavLink
       className={styles.NavLink}
-      to="/"
+      to="/summary"
       onClick={handleSignOut}
     >
       <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
@@ -72,6 +65,13 @@ const NavBar = () => {
   </>;
   const loggedOutIcons = (
     <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/summary"
+      >
+        <i className="fa-solid fa-camera"></i> Summary
+      </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
