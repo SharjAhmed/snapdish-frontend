@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,9 +6,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Figure from 'react-bootstrap/Figure';
 import Alert from "react-bootstrap/Alert";
-
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -18,15 +15,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function CreatePostForm() {
-    const [errors, setErrors] = useState({});
 
+    const [errors, setErrors] = useState({});
     const [postData, setPostData] = useState({
         title: "",
         content: "",
         image: "",
     });
     const { title, content, image } = postData;
-
     const imageInput = useRef(null);
     const history = useHistory();
 
@@ -65,7 +61,6 @@ function CreatePostForm() {
             }
         }
     };
-
 
     const textFields = (
         <div className="text-center">

@@ -14,8 +14,6 @@ import {
     Alert,
 } from "react-bootstrap";
 
-
-
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
         username: "",

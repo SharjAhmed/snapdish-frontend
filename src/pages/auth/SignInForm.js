@@ -28,13 +28,14 @@ function SignInForm() {
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const { data } = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user);
-            history.push("/");
+            history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
         }

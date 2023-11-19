@@ -53,7 +53,7 @@ function EditCommentForm(props) {
             <div>
                 <button
                     className={`${btnStyles.Button} mt-4`}
-                    disabled={!content.trim()}
+                    // disabled={!content.trim()}
                     type="submit"
                 >
                     Comment
