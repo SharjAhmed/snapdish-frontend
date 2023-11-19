@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 
 import Asset from "../../components/Asset";
-import NoResults from "../../assets/logo-black.png";
+import NoResults from "../../assets/no-results.png";
 import { EditProfileDropdown } from "../../components/EditDeleteDropdown";
 import Post from "../posts/Post";
 import PopularProfiles from "./PopularProfiles";

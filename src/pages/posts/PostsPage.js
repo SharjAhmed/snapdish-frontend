@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Post from "./Post";
 import Asset from "../../components/Asset";
 import PopularProfiles from "../profiles/PopularProfiles"
-import NoResults from "../../assets/logo-black.png";
+import NoResults from "../../assets/no-results.png";
 
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
