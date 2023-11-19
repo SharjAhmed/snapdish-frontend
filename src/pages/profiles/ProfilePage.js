@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useParams } from "react-router";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Button, Image } from "react-bootstrap";
 
 import Asset from "../../components/Asset";
+import NoResults from "../../assets/logo-black.png";
+import { EditProfileDropdown } from "../../components/EditDeleteDropdown";
+import Post from "../posts/Post";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
@@ -12,24 +18,20 @@ import btnStyles from "../../styles/Button.module.css";
 
 import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/logo-black.png";
+
+import { axiosReq } from "../../api/axiosDefaults";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  const {setProfileData, handleFollow, handleUnfollow} = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
@@ -58,6 +60,7 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
+      {profile?.is_owner && <EditProfileDropdown id={profile?.id} />}
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -87,7 +90,7 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-              className={`${btnStyles.Button} ${btnStyles.Inverted}`}
+                className={`${btnStyles.Button} ${btnStyles.Inverted}`}
                 onClick={() => handleUnfollow(profile)}
               >
                 Unfollow
