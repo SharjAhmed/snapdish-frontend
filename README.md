@@ -14,7 +14,7 @@ This repository is the frontend of Snapdish which uses HTML, CSS, JavaScript, Re
 
 - [SnapDish Frontend Deployed Link](https://snapdish-frontend-57cabaa4da7e.herokuapp.com/)
 
-## Back End Links
+## backend Links
 
 - [SnapDish Backend Deployed Link](https://snapdish-backend-eb95a816e88d.herokuapp.com/)
 - [SnapDish Backend GitHub Link](https://github.com/SharjAhmed/snapdish-backend)
@@ -460,7 +460,7 @@ User stories covered:
 
 7. [Axios](https://axios-http.com/)
 
-   - Promise based http client for making http requests to the back end API
+   - Promise based http client for making http requests to the backend API
 
 8. [Cloudinary](https://cloudinary.com/)
 
@@ -576,9 +576,7 @@ I came across many bugs during this process, and spent a lot of time on with tut
 
 2. Frontend was acting as though I was logged in but backend was showing as undefined. After speaking with tutor support, it was discovered that I had installed django-rest-auth v5.0.1 which did not support the code - installed v2.1.9 and allauth v0.44.0 instead of v0.55.2 for compatibility as Heroku failed to deploy with v0.55.2
 
-3. Kept receiving 500 error when I was attempting to create a post - I had used "length" instead of "height" in the image validation in the Post Serializer.
-
-4. I was unable to edit a comment successfully - this was my longest lasting bug, and I spent a lot of time through a lot of different channels trying to resolve this:
+3. I was unable to edit a comment successfully - this was my longest lasting bug, and I spent a lot of time through a lot of different channels trying to resolve this:
     - Tutor Support
     - Google
     - Slack
@@ -594,16 +592,16 @@ I came across many bugs during this process, and spent a lot of time on with tut
             - `{"owner":["This field is required."]}`
             - So I went back to my backend code and took it back to basics by following the Django REST walkthrough project - after fiddling around with the code and makign sure there were no typos, the issue was finally resolved.
 
-5. There is a small unresolved bug - when updating a comment, the page needs to be refreshed to show the updated comment content - there are no errors in the console for this and given more time, I would have investigated further and resolved.
+4. There is a small unresolved bug - when updating a comment, the page needs to be refreshed to show the updated comment content - there are no errors in the console for this and given more time, I would have investigated further and resolved.
 ## Deployment
 
-This application has been deployed from GitHub to Heroku by following the steps (these are steps after you have set up the front end project in the Config Vars of the back end project):
+This application has been deployed from GitHub to Heroku by following the steps (these are steps after you have set up the frontend project in the Config Vars of the backend project):
 
 1. Create or log in to your account on [Heroku.com](https://www.heroku.com/).
 2. Create a new app, add app name and choose your region.
 3. Click on create app.
 4. In Terminal of your project, push your changes to GitHub.
-5. Log in to Heroku.com and open the dashboard for your react application (for the front end).
+5. Log in to Heroku.com and open the dashboard for your react application (for the frontend).
 6. Select the “Deploy” tab in the dashboard
 7. Scroll down to the bottom and then select “Manual deploy”, and choose your repository.
 8. Wait for your build to complete.
