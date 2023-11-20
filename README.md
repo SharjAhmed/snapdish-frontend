@@ -1,4 +1,4 @@
-# SnapDish - Front-End
+# SnapDish - Frontend
 
 (Developer: Sharj Ahmed)
 
