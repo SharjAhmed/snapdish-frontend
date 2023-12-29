@@ -17,6 +17,7 @@ import styles from "../styles/NavBar.module.css";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  console.log(currentUser)
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -26,7 +27,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      //console.log(err);
+      console.log(err);
     }
   };
 

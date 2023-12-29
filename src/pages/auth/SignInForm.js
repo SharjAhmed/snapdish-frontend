@@ -23,6 +23,7 @@ function SignInForm() {
         password: "",
     });
     const { username, password } = signInData;
+    console.log(signInData, "username")
 
     const [errors, setErrors] = useState({});
 
